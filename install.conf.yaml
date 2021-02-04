@@ -1,0 +1,26 @@
+# install.conf.yaml
+- defaults:
+    link:
+      create: true
+      relink: true
+
+- clean: ['~']
+
+- link:
+    ~/.config/git/ignore: config/git/ignore
+    ~/.config/fish: config/fish
+    ~/.config/omf: config/omf
+    ~/.ssh/config: ssh/config
+    ~/.tmux.conf: tmux.conf
+    ~/.vimrc: vimrc
+    ~/bin: bin/
+
+- create:
+    - ~/.ssh/sockets
+    - ~/.ssh/config.d
+    - ~/Projects
+
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]
+  - [chsh -s $(which fish), Making fish the default shell]
+  
