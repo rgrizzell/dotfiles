@@ -1,0 +1,1 @@
+/home/grizz/.dotfiles/fzf/shell/key-bindings.fish
