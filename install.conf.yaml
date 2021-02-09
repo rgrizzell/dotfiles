@@ -7,13 +7,13 @@
 - clean: ['~']
 
 - link:
-    ~/.config/git/ignore: config/git/ignore
+    ~/.config/git: config/git
     ~/.config/fish: config/fish
     ~/.config/omf: config/omf
     ~/.ssh/config: ssh/config
     ~/.tmux.conf: tmux.conf
     ~/.vimrc: vimrc
-    ~/bin: bin/
+    #~/bin: bin/
 
 - create:
     - ~/.ssh/sockets
@@ -21,6 +21,5 @@
     - ~/Projects
 
 - shell:
-  - [git submodule update --init --recursive, Installing submodules]
-  - [chsh -s $(which fish), Making fish the default shell]
-  
+    - [git submodule update --init --recursive, Installing submodules]
+    - [yes | ./fzf/install, Installing fzf]
