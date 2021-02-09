@@ -1,0 +1,10 @@
+[user]
+	name = Robert Grizzell
+	email = robert@grizzell.me
+
+[core]
+	editor = vim
+
+[credential "https://github.com"]
+	username = rgrizzell
+

@@ -1,5 +1,0 @@
-# aptget.conf.yaml
-- aptget:
-    curl:
-    fish: ppa:fish-shell/release-3
-    jq:
