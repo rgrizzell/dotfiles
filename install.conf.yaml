@@ -13,7 +13,7 @@
     ~/.ssh/config: ssh/config
     ~/.tmux.conf: tmux.conf
     ~/.vimrc: vimrc
-    #~/bin: bin/
+    ~/bin: bin
 
 - create:
     - ~/.ssh/sockets
