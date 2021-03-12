@@ -1,4 +1,8 @@
 Include ~/.ssh/config.d/*.conf
+Host bitbucket.org
+    # Prevents `mux_client_request_session` errors.
+    ControlMaster no
+
 Host *
     Compression yes
     ControlMaster auto
