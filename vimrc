@@ -12,5 +12,10 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 call plug#begin('~/.vim/plugged')
 Plug 'sheerun/vim-polyglot'
 Plug 'altercation/vim-colors-solarized'
+Plug 'hashivim/vim-terraform'
 Plug '~/.dotfiles/fzf'
 call plug#end()
+
+let g:terraform_align=1
+let g:terraform_fold_sections=1
+let g:terraform_fmt_on_save=1
