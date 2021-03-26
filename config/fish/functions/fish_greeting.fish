@@ -3,6 +3,8 @@ function fish_greeting
 	if test $changes -gt 0
 		echo "There are $changes dotfile changes pending."
 	else
+		echo "Updating dotfiles..."
 		git -C $DOTFILES pull -q
+		clear
 	end
 end
