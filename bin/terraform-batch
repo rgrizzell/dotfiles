@@ -1,0 +1,58 @@
+#!/usr/bin/env bash
+
+# Commands
+AWK=$(command -v awk)
+TERRAFORM=$(command -v terraform)
+
+# Variables
+resources=()
+terraform_args=()
+
+# Functions
+err() { 
+    echo "$@" 1>&2
+}
+
+usage() {
+    echo "Usage:"
+    echo "    terraform-batch -h                              Display this help message."
+    echo "    terraform-batch -f file.tf [-f file2.tf]        Apply all resources in a given file(s)."
+    echo "    terraform-batch -y -f file.tf                   Automatically apply resources."
+    exit 0
+}
+
+# Parse arguments
+while getopts ":f:yh" opt; do
+    case ${opt} in
+        f )
+            files+=(${OPTARG[@]})
+            ;;
+        y )
+            terraform_args+=("-auto-approve")
+            ;;
+        h )
+            usage
+            ;;
+        \? )
+            err "Invalid Option: -$OPTARG"
+            exit 1
+            ;;
+    esac
+done
+shift $((OPTIND -1))
+
+# Main script
+if [[ ${files[@]} > 0 ]]; then
+    for file in ${files[@]}; do
+        if [[ -f "${file}" ]]; then
+            resources+=($(${AWK} '/^module/ {gsub(/"/, ""); print "-target=module."$2}' ${file}))
+            resources+=($(${AWK} '/^resource/ {gsub(/"/, ""); print "-target="$2"."$3}' ${file}))
+        else
+            err "No such file or directory: ${file}"
+        fi
+    done
+    ${TERRAFORM} apply -compact-warnings ${terraform_args[@]} ${resources[@]}
+else
+    usage
+fi
+
