@@ -10,7 +10,7 @@
     ~/.config/git: config/git
     ~/.config/fish: config/fish
     ~/.config/omf: config/omf
-    ~/.gnupg/gpg.conf: gnupg/gpg.conf
+    ~/.gnupg: gnupg
     ~/.ssh/config: ssh/config
     ~/.tmux.conf: tmux.conf
     ~/.vimrc: vimrc
