@@ -29,22 +29,23 @@ set $workspace_09               9:9
 set $workspace_10               10:10
 
 # Colors
-set $bg_active                  #16C2FB
-set $bg_inactive                #007095
-set $bg_urgent                  #FF2800
+set $bg_active                  #6272A4
+set $bg_inactive                #44475A
+set $bg_urgent                  #282A36
 
-set $border_active              #16C2FB
-set $border_inactive            $bg_inactive
-set $border_urgent              #B27B78
+set $border_active              #6272A4
+set $border_inactive            #44475A
+set $border_urgent              #282A36
 
-set $text_active                #FDFEFF
-set $text_inactive              #212121
+set $text_active                #F8F8F2
+set $text_inactive              #BFBFBF
+set $text_urgent                #F8F8F2
 
-set $bg_active_workspace        #383E47
-set $bg_inactive_workspace      #C48D62
+set $bg_active_workspace        #44475A
+set $bg_inactive_workspace      #282A36
 
-set $bg_bar                     #383E47
-set $indicator                  #03C0FF
+set $bg_bar                     #282A36
+set $indicator                  #F8F8F2
 
 set $rofi_bg                    #007095
 set $rofi_fg                    #000000
@@ -72,6 +73,9 @@ set $oug                        50
 
 # i3lock
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+
+# Gnome Settings
+exec --no-startup-id gnome-settings-daemon
 
 # Network Manager
 exec --no-startup-id nm-applet
@@ -164,8 +168,11 @@ mode "Gaps" {
 bindsym $mod+g mode "Gaps"
 
 
-# dmenu
-bindsym $mod+d exec dmenu_run
+# Dmenu
+#bindsym $mod+d exec dmenu_run
+
+# Rofi
+bindsym $mod+d exec rofi -show run -lines 5 -eh 2 -opacity 50 -bw 0 -bc "$bg_active" -bg "$rofi_bg" -fg "$rofi_fg" -hlbg "$rofi_selected" -hlfg "$rofi_fg" -font "Ubuntu 12"
 
 # Terminal
 bindsym $mod+Return exec i3-sensible-terminal
@@ -186,7 +193,7 @@ font $font_name $font_size_sm
 client.focused          $border_active      $bg_active          $text_active         $border_active
 client.unfocused        $border_inactive    $bg_inactive        $text_inactive       $border_inactive
 client.focused_inactive $border_inactive    $bg_inactive        $text_inactive       $border_inactive
-client.urgent           $border_urgent      $bg_urgen           $text-color          $border_urgen
+client.urgent           $border_urgent      $bg_urgent          $text_urgent         $border_urgent
 
 # Wallpaper
 exec_always --no-startup-id $wall_prog $wall_type $wall_dir
@@ -240,6 +247,7 @@ bindsym $mod+Shift+0 move container to workspace $workspace_10
 bar {
         colors {
                 background          $bg_bar
+                statusline          $indicator
                 focused_workspace   $bg_active                $bg_active_workspace    $text_active
                 inactive_workspace  $bg_inactive_workspace    $bg_inactive_workspace  $text_inactive
                 active_workspace    $bg_inactive_workspace    $bg_inactive_workspace  $text_inactive
