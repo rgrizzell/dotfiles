@@ -16,9 +16,17 @@ Plug 'hashivim/vim-terraform'
 Plug '~/.dotfiles/fzf'
 call plug#end()
 
+
+" Plugin settings
 let g:terraform_align=1
 let g:terraform_fold_sections=1
 let g:terraform_fmt_on_save=1
 
+
+" Custom commands
+command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
+
+
 " Filetype specific settings
 autocmd FileType fish setlocal shiftwidth=4 tabstop=4
+
