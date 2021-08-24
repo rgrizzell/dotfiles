@@ -1,5 +1,6 @@
 # These files change dynamically based on the local system.
 bin/*
+config/fish/conf.d/_*.fish
 config/fish/fish_variables
 config/fish/functions/fish_prompt.fish
 config/fish/functions/fish_user_key_bindings.fish
