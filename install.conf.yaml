@@ -21,7 +21,7 @@
 
 - create:
     - ~/.ssh/sockets
-    - ~/.ssh/config.d
+    - ~/.ssh/conf.d
     - ~/Projects
 
 - shell:
