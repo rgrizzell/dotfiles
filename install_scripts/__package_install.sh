@@ -21,4 +21,3 @@ __package_install() {
     esac
 }
 
-__package_install $@
