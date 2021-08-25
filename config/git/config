@@ -1,6 +1,7 @@
 [user]
 	name = Robert Grizzell
 	email = robert@grizzell.me
+	signingkey = F7F6C134977499ED
 
 [core]
 	editor = vim
