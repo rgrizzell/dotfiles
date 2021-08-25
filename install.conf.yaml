@@ -20,11 +20,12 @@
     ~/bin: bin
 
 - create:
+    - ~/.local/share/fonts
     - ~/.ssh/sockets
     - ~/.ssh/conf.d
     - ~/Projects
 
 - shell:
     - [git submodule update --init --recursive, Downloading submodules]
-    - [curl -L https://get.oh-my.fish | fish, Installing oh-my-fish]
+    - [curl -L https://get.oh-my.fish | fish --noninteractive --yes, Installing oh-my-fish]
     - [yes | ./fzf/install, Installing fzf]
