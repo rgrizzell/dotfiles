@@ -6,7 +6,13 @@ __package_install() {
 
     case $ID_LIKE in
         debian )
-            apt-get update
+            apt_cache_age=$(expr $(date +%s) - $(stat -c %Z /var/lib/apt/periodic/update-success-stamp))
+
+            if [ $apt_cache_age -gt 1200 ]; then
+                echo "Updating Apt cache"
+                apt-get update
+            fi
+
             apt-get install -y $@
             ;;
         fedora )
@@ -15,3 +21,4 @@ __package_install() {
     esac
 }
 
+__package_install $@
