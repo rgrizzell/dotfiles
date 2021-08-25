@@ -20,6 +20,7 @@
     ~/bin: bin
 
 - create:
+    - ~/.local/share/fonts
     - ~/.ssh/sockets
     - ~/.ssh/conf.d
     - ~/Projects
