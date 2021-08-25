@@ -13,7 +13,7 @@ __package_check "zip"
 # Set some values
 local_font_dir="/home/$USER/.local/share/fonts"
 nerd_font_release="https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0"
-nerd_fonts="Ubuntu UbuntuMono"
+nerd_fonts="Ubuntu UbuntuMono OpenDyslexic"
 
 
 if [ -d $local_font_dir ]; then
