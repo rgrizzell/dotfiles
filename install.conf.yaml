@@ -15,6 +15,7 @@
     ~/.config/terminator: config/terminator
     ~/.gnupg: gnupg
     ~/.ssh/config: ssh/config
+    ~/.ssh/id_rsa_gpg.pub: ssh/id_rsa_gpg.pub
     ~/.tmux.conf: tmux.conf
     ~/.vimrc: vimrc
     ~/bin: bin
