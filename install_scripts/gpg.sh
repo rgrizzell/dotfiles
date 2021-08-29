@@ -20,3 +20,7 @@ if __package_check $yubikey_pkgs; then
     echo "Install Yubikey packages"
     __package_install $yubikey_pkgs
 fi
+
+# Ensure services are started
+systemctl enable pcscd.service
+systemctl start pcscd.service
