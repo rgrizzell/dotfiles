@@ -9,7 +9,7 @@ shared_script_dir=$(dirname $0)
 
 # Set some values
 gpg_pkgs="gnupg2 gnupg-agent gnupg-utils scdaemon pcscd"
-yubikey_pkgs="yubikey-manager yubikey_personalization"
+yubikey_pkgs="yubikey-manager yubikey-personalization"
 
 if __package_check $gpg_pkgs; then
     echo "Install GPG packages"
