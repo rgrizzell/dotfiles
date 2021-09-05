@@ -52,7 +52,7 @@ set $rofi_fg                    #000000
 set $rofi_selected              #FFFFFF
 
 # Wallpaper
-set $wall_dir                   ~/wallpaper.jpg
+set $wall_dir                   ~/.config/variety/wallpaper/wallpaper.jpg.txt
 set $wall_type                  --bg-fill
 set $wall_prog                  feh
 
@@ -196,7 +196,7 @@ client.focused_inactive $border_inactive    $bg_inactive        $text_inactive  
 client.urgent           $border_urgent      $bg_urgent          $text_urgent         $border_urgent
 
 # Wallpaper
-exec_always --no-startup-id $wall_prog $wall_type $wall_dir
+exec_always --no-startup-id $wall_prog $wall_type $(cat $wall_dir)
 
 # Remove title and border
 new_window 1pixel
