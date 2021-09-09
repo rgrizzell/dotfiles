@@ -2,11 +2,12 @@
 
 # Commands
 AWK=$(command -v awk)
-TERRAFORM=$(command -v terraform)
+TERRAFORM=${TERRAFORM:-$(which terraform)}
 
 # Variables
 resources=()
 terraform_args=()
+action="apply"
 
 # Functions
 err() { 
@@ -18,12 +19,16 @@ usage() {
     echo "    terraform-batch -h                              Display this help message."
     echo "    terraform-batch -f file.tf [-f file2.tf]        Apply all resources in a given file(s)."
     echo "    terraform-batch -y -f file.tf                   Automatically apply resources."
+    echo "    terraform-batch -d -f file.ty                   Destroy all resources in a given file(s)."
     exit 0
 }
 
 # Parse arguments
-while getopts ":f:yh" opt; do
+while getopts ":df:yh" opt; do
     case ${opt} in
+        d )
+            action="destroy"
+            ;;
         f )
             files+=(${OPTARG[@]})
             ;;
@@ -51,7 +56,7 @@ if [[ ${files[@]} > 0 ]]; then
             err "No such file or directory: ${file}"
         fi
     done
-    ${TERRAFORM} apply -compact-warnings ${terraform_args[@]} ${resources[@]}
+    ${TERRAFORM} ${action} -compact-warnings ${terraform_args[@]} ${resources[@]}
 else
     usage
 fi
