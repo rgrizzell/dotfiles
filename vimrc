@@ -34,7 +34,7 @@ command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 
 " Filetype specific settings
 autocmd FileType fish setlocal shiftwidth=4 tabstop=4
-
+autocmd FileType reg  setlocal fileformat=dos
 
 " Enable Manpage support
 runtime ftplugin/man.vim
