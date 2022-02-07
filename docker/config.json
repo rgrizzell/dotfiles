@@ -1,3 +1,6 @@
 {
-	"credsStore": "docker-credential-secretservice"
+	"auths": {
+		"https://index.docker.io/v1/": {}
+	},
+	"credsStore": "secretservice"
 }
