@@ -1,3 +1,5 @@
 function add-to-path --description 'Persistently prepends paths to your PATH'
-  set --universal fish_user_paths $fish_user_paths $argv
+	contains -- $argv $fish_user_paths
+		or set -U fish_user_paths $fish_user_paths $argv
+	echo "Updated PATH: $PATH"
 end
