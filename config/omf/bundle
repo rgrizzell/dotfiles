@@ -1,5 +1,5 @@
 package bang-bang
-package fzf
 package fish-pipenv
+package fzf
 theme bobthefish
 theme default
