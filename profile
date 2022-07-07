@@ -25,3 +25,8 @@ if [ -d "$HOME/.gnupg" ] ; then
     SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
     gpgconf --launch gpg-agent
 fi
+
+# load variables for the session
+if [ -f "$HOME/.profile_vars" ] ; then
+    . "$HOME/.profile_vars"
+fi
