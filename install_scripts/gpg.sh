@@ -8,7 +8,7 @@ shared_script_dir=$(dirname $0)
 
 
 # Set some values
-gpg_pkgs="gnupg2 gnupg-agent gnupg-utils scdaemon pcscd"
+gpg_pkgs="gnupg2 gnupg-agent gnupg-utils hopenpgp-tools scdaemon pcscd"
 yubikey_pkgs="yubikey-manager yubikey-personalization libu2f-udev"
 
 if __package_check $gpg_pkgs; then
@@ -22,5 +22,5 @@ if __package_check $yubikey_pkgs; then
 fi
 
 # Ensure services are started
-systemctl enable pcscd.service
-systemctl start pcscd.service
+sudo systemctl enable pcscd.service
+sudo systemctl start pcscd.service

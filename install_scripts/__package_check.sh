@@ -4,12 +4,12 @@ __package_check() {
     # Get the OS details
     . /etc/os-release
 
-    case $ID_LIKE in
-        debian )
-            dpkg-query -W $1 >/dev/null
+    case $ID in
+        debian|ubuntu|pop )
+            sudo dpkg-query -W $1 >/dev/null
             ;;
         fedora )
-            rpm -qa | grep $1
+            sudo rpm -qa | grep $1
             ;;
     esac
 }
