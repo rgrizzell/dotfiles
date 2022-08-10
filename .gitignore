@@ -1,6 +1,7 @@
 # These files change dynamically based on the local system.
 bin/*
 config/autostart/*
+config/fish/completions/*.fish
 config/fish/conf.d/_*.fish
 config/fish/fish_variables
 config/fish/functions/fish_prompt.fish
