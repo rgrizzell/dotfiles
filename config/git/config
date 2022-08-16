@@ -7,6 +7,10 @@
 	editor = vim
 	autocrlf = input
 
+[init]
+	defaultBranch = "main"
+  templateDir = "~/.config/git/template"
+
 [credential "https://github.com"]
 	username = rgrizzell
 
