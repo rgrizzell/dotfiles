@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Import shared functions
-shared_script_dir=$(dirname $0)
-. $shared_script_dir/__package_check.sh
-. $shared_script_dir/__package_install.sh
+shared_script_dir=$(dirname "$0")
+. "$shared_script_dir/__package_check.sh"
+. "$shared_script_dir/__package_install.sh"
 
 
 # Set some values

@@ -5,32 +5,32 @@ PROFILE_ARN=""
 FILE=""
 ACCOUNT=""
 
-if [ -z $1 ]; then
+if [ -z "$1" ]; then
     echo "Please specify an instance profile."
     exit 1
 else
-    PROFILE=$1
+    PROFILE="$1"
 fi
 
-if [ ! -f $2 ]; then
+if [ ! -f "$2" ]; then
     echo "File not found. Please specify a file for processing."
     exit 1
 else
-    FILE=$2
+    FILE="$2"
 fi
 
-if [ -n $3 ]; then
-    ACCOUNT=$3
+if [ -n "$3" ]; then
+    ACCOUNT="$3"
 else
     ACCOUNT="default"
 fi
 
-PROFILE_ARN=$(aws iam get-instance-profile --instance-profile-name ${PROFILE} --profile ${ACCOUNT} | sed -En 's/^\s+\"Arn\":\s?\"(arn:aws:iam::[[:digit:]]{12}:instance-profile\/.*)\",?$/\1/p')
+PROFILE_ARN=$(aws iam get-instance-profile --instance-profile-name "${PROFILE}" --profile "${ACCOUNT}" | sed -En 's/^\s+\"Arn\":\s?\"(arn:aws:iam::[[:digit:]]{12}:instance-profile\/.*)\",?$/\1/p')
 
-for instance in $(cat ${FILE}); do
-    association_id=$(aws ec2 describe-iam-instance-profile-associations --filter Name=instance-id,Values=${instance} --profile production | sed -En 's/^\s+\"AssociationId\":\s?\"(.*)\",?$/\1/p')
-    aws ec2 replace-iam-instance-profile-association --iam-instance-profile Arn=${PROFILE_ARN},Name=${PROFILE} --association-id ${association_id} --profile ${ACCOUNT}
-done
+while IFS= read -r instance; do
+    association_id=$(aws ec2 describe-iam-instance-profile-associations --filter Name=instance-id,Values="${instance}" --profile production | sed -En 's/^\s+\"AssociationId\":\s?\"(.*)\",?$/\1/p')
+    aws ec2 replace-iam-instance-profile-association --iam-instance-profile Arn="${PROFILE_ARN}",Name="${PROFILE}" --association-id "${association_id}" --profile "${ACCOUNT}"
+done < "$FILE"
 
 # End of script
 exit 0

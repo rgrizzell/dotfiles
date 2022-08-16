@@ -6,10 +6,10 @@ __package_check() {
 
     case $ID in
         debian|ubuntu|pop )
-            sudo dpkg-query -W $1 >/dev/null
+            sudo dpkg-query -W "$1" >/dev/null
             ;;
         fedora )
-            sudo rpm -qa | grep $1
+            sudo rpm -qa | grep "$1"
             ;;
     esac
 }

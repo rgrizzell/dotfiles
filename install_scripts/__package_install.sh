@@ -7,10 +7,10 @@ __package_install() {
     case $ID in
         debian|ubuntu|pop )
             sudo apt-get update
-            sudo apt-get install -y $@
+            sudo apt-get install -y "$@"
             ;;
         fedora )
-            sudo dnf install -y $@
+            sudo dnf install -y "$@"
             ;;
     esac
 }

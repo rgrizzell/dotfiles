@@ -10,7 +10,7 @@ repos:
   - id: check-yaml
   - id: detect-aws-credentials
     args:
-      - --allow-missing-credentials
+    - --allow-missing-credentials
   - id: detect-private-key
   - id: destroyed-symlinks
   - id: end-of-file-fixer
@@ -20,3 +20,8 @@ repos:
   hooks:
   - id: fish_syntax
   - id: fish_indent
+- repo: https://github.com/shellcheck-py/shellcheck-py
+  rev: v0.8.0.4
+  hooks:
+  - id: shellcheck
+    exclude: ^config/git/template/hooks/pre-commit

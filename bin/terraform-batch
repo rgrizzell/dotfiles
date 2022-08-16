@@ -2,7 +2,7 @@
 
 # Commands
 AWK=$(command -v awk)
-TERRAFORM=${TERRAFORM:-$(which terraform)}
+TERRAFORM="${TERRAFORM:-$(which terraform)}"
 
 # Variables
 resources=()
@@ -30,7 +30,7 @@ while getopts ":df:yh" opt; do
             action="destroy"
             ;;
         f )
-            files+=(${OPTARG[@]})
+            files+=("${OPTARG[@]}")
             ;;
         y )
             terraform_args+=("-auto-approve")
@@ -47,16 +47,19 @@ done
 shift $((OPTIND -1))
 
 # Main script
-if [[ ${files[@]} > 0 ]]; then
-    for file in ${files[@]}; do
+if [[ "${files[*]}" -gt 0 ]]; then
+    for file in "${files[@]}"; do
         if [[ -f "${file}" ]]; then
-            resources+=($(${AWK} '/^module/ {gsub(/"/, ""); print "-target=module."$2}' ${file}))
-            resources+=($(${AWK} '/^resource/ {gsub(/"/, ""); print "-target="$2"."$3}' ${file}))
+            # shellcheck disable=SC2016
+            while IFS="" read -r line; do
+                resources+=("$line")
+            done < <("${AWK}" '/^module/ {gsub(/"/, ""); print "-target=module."$2}' "${file}" &&
+                "${AWK}" '/^resource/ {gsub(/"/, ""); print "-target="$2"."$3}' "${file}")
         else
             err "No such file or directory: ${file}"
         fi
     done
-    ${TERRAFORM} ${action} -compact-warnings ${terraform_args[@]} ${resources[@]}
+    "${TERRAFORM}" "${action}" -compact-warnings "${terraform_args[@]}" "${resources[@]}"
 else
     usage
 fi

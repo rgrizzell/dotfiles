@@ -2,29 +2,29 @@
 # Install GPG packages needed for YubiKey support
 
 # Import shared functions
-shared_script_dir=$(dirname $0)
-. $shared_script_dir/__package_check.sh
-. $shared_script_dir/__package_install.sh
+shared_script_dir=$(dirname "$0")
+. "$shared_script_dir/__package_check.sh"
+. "$shared_script_dir/__package_install.sh"
 
 
 # Set some values
 gpg_pkgs="gnupg2 gnupg-agent gnupg-utils hopenpgp-tools scdaemon pcscd"
 yubikey_pkgs="yubikey-manager yubikey-personalization libu2f-udev"
 
-if __package_check $gpg_pkgs; then
+if __package_check "$gpg_pkgs"; then
     echo "Install GPG packages"
-    __package_install $gpg_pkgs
+    __package_install "$gpg_pkgs"
 fi
 
-if __package_check $yubikey_pkgs; then
+if __package_check "$yubikey_pkgs"; then
     echo "Install Yubikey packages"
-    __package_install $yubikey_pkgs
+    __package_install "$yubikey_pkgs"
 fi
 
 # Ensure services are started
 sudo systemctl enable pcscd.service
 sudo systemctl start pcscd.service
 
-if [ -n $KEYID ]; then
-    gpg --recv-key $KEYID
+if [ -n "$KEYID" ]; then
+    gpg --recv-key "$KEYID"
 fi
