@@ -20,7 +20,8 @@ call plug#end()
 " Vim settings
 set modeline
 set modelines=5
-
+set autoindent
+set smartindent
 
 " Plugin settings
 let g:terraform_align=1
@@ -33,7 +34,7 @@ command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 
 
 " Filetype specific settings
-autocmd FileType fish setlocal shiftwidth=4 tabstop=4
+autocmd FileType fish setlocal shiftwidth=4 tabstop=4 expandtab
 autocmd FileType reg  setlocal fileformat=dos
 
 " Enable Manpage support

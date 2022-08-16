@@ -24,4 +24,3 @@ print_sort "^\+\," "CREATE"
 print_sort "^\-\," "REMOVE"
 print_sort "^\+\/\-\," "CREATE/REMOVE"
 print_sort "^\-\/\+\," "REMOVE/CREATE"
-

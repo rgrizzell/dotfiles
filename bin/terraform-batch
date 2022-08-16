@@ -10,7 +10,7 @@ terraform_args=()
 action="apply"
 
 # Functions
-err() { 
+err() {
     echo "$@" 1>&2
 }
 
@@ -60,4 +60,3 @@ if [[ ${files[@]} > 0 ]]; then
 else
     usage
 fi
-

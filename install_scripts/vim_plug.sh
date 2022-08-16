@@ -9,7 +9,7 @@ shared_script_dir=$(dirname $0)
 vim_pkgs="vim"
 
 if __package_check $vim_pkgs; then
-    __package_install $vim_pkgs 
+    __package_install $vim_pkgs
 fi
 
 if ! [ -f ~/.vim/autoload/plug.vim ]; then

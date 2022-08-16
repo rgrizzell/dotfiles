@@ -14,4 +14,3 @@ __package_install() {
             ;;
     esac
 }
-

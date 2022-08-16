@@ -14,4 +14,3 @@ if __package_check "fish"; then
     fish $install_tmp --noninteractive --yes
     rm $install_tmp
 fi
-

@@ -24,3 +24,7 @@ fi
 # Ensure services are started
 sudo systemctl enable pcscd.service
 sudo systemctl start pcscd.service
+
+if [ -n $KEYID ]; then
+    gpg --recv-key $KEYID
+fi

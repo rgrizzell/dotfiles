@@ -13,4 +13,3 @@ __package_check() {
             ;;
     esac
 }
-

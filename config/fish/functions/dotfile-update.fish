@@ -1,3 +1,3 @@
 function dotfile-update
-	bash $DOTFILES/install
+    bash $DOTFILES/install
 end

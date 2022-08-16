@@ -123,7 +123,7 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# Split 
+# Split
 bindsym $mod+h split h
 bindsym $mod+v split v
 
@@ -269,4 +269,3 @@ focus_follows_mouse no
 
 # Prevent touchpad tapping
 exec synclient MaxTapTime=0
-

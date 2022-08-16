@@ -23,7 +23,6 @@ if [ -d $local_font_dir ]; then
         unzip -u "${local_font_dir}/${font}.zip" -d "${local_font_dir}/${font}"
         rm "${local_font_dir}/${font}.zip"
     done
-    
+
     fc-cache -fv
 fi
-

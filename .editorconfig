@@ -1,0 +1,9 @@
+# Repository Defaults
+root = true
+indent_style = space
+
+[*.fish]
+indent_size = 4
+
+[*.sh]
+indent_size = 4
