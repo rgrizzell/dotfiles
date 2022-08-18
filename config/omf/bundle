@@ -1,5 +1,10 @@
+package apt
+package aws
 package bang-bang
 package fish-pipenv
+package foreign-env
 package fzf
+package grc
+package https://github.com/franciscolourenco/done
 theme bobthefish
 theme default
