@@ -1,0 +1,124 @@
+#!/usr/bin/env bash
+# Performs GPG maintenance tasks such as subkey renewal, rotation, and YubiKey loading.
+
+GNUPGHOME=${GNUPGHOME:-"$(mktemp -d)"}
+basename=$(basename $0)
+
+# "Configurables"
+surname="Grizzell"
+given_name="Robert"
+lang="en"
+url="https://keyoxide.org/hkp/$KEYID"
+login="robert@grizzell.me"
+
+# Command Functions
+usage() {
+	cat <<- EOL
+	Usage:
+		$basename [-h|help]			Display this help message.
+
+	Subkeys:
+		$basename renew [keyid]
+		$basename rotate [keyid]
+
+	YubiKey:
+		$basename reset
+		$basename load [keyid]
+	EOL
+}
+
+err() {
+	echo "$@" 1>&2
+}
+
+### Main Script ###
+# Prepares the Smart Card for subkeys.
+bootstrap() {
+	admin_pin=$(mktemp)
+	trap "rm -rf $admin_pin" EXIT
+	read -p "Admin PIN: " -s pin
+	echo $pin >$admin_pin
+
+	if check; then
+		gpg --command-fd 0 --passphrase-fd 9 --pinentry-mode=loopback --with-colons --card-edit 9<$admin_pin <<- EOL
+		admin
+		kdf-setup
+		name
+		$surname
+		$given_name
+		lang
+		$lang
+		url
+		$url
+		login
+		$login
+		EOL
+
+		read -p "Unplug and plug the Yubikey, then press any key to continue"
+		if ykman info && ykman list; then
+			ykman openpgp access set-retries 5 5 5 --admin-pin $pin --force
+			ykman openpgp keys set-touch aut cached --admin-pin $pin --force
+			ykman openpgp keys set-touch enc cached --admin-pin $pin --force
+			ykman openpgp keys set-touch sig cached --admin-pin $pin --force
+			echo "PIN and touch settings applied."
+		fi
+	fi
+}
+
+check() {
+	keys=$(gpg --card-status --with-colons | awk -F: '/fpr:/{print $2 $3 $4}')
+	if [[ -n $keys ]]; then
+		return 1
+	else
+		return 0
+	fi
+}
+
+load() {
+	echo ""
+}
+
+renew() {
+	echo ""
+}
+
+reset() {
+	if command -v ykman >/dev/null; then
+		if ykman info || ykman list; then
+			read -p "This will reset the device. Continue? (y/N)" -r
+			if [[ $REPLY =~ ^[Yy].*$ ]]; then
+				ykman openpgp reset --force
+			else
+				err "Aborting"
+			fi
+		fi
+	else
+		err "ykman not installed."
+	fi
+}
+
+rotate() {
+	echo ""
+}
+
+# Parse arguments
+while getopts ":bcrh" opt; do
+	case ${opt} in
+		b )
+			bootstrap
+			;;
+		c )
+			check
+			;;
+		r )
+			reset
+			;;
+		h )
+			usage
+			;;
+		\? )
+			err "Invalid option: -$OPTARG"
+			exit 1
+			;;
+	esac
+done
