@@ -1,5 +1,4 @@
 package apt
-package aws
 package bang-bang
 package fish-pipenv
 package foreign-env
