@@ -3,6 +3,7 @@
 # Commands
 AWK=$(command -v awk)
 TERRAFORM="${TERRAFORM:-$(which terraform)}"
+TFVARS=${TFVARS:"${HOME}/.tfvars"}
 
 # Variables
 resources=()
@@ -19,12 +20,13 @@ usage() {
     echo "    terraform-batch -h                              Display this help message."
     echo "    terraform-batch -f file.tf [-f file2.tf]        Apply all resources in a given file(s)."
     echo "    terraform-batch -y -f file.tf                   Automatically apply resources."
-    echo "    terraform-batch -d -f file.ty                   Destroy all resources in a given file(s)."
+    echo "    terraform-batch -d -f file.tf                   Destroy all resources in a given file(s)."
+    echo "    terraform-batch -f file.tf -v file.tfvars       Specify a variables file."
     exit 0
 }
 
 # Parse arguments
-while getopts ":df:yh" opt; do
+while getopts ":df:v:yh" opt; do
     case ${opt} in
         d )
             action="destroy"
@@ -38,6 +40,9 @@ while getopts ":df:yh" opt; do
         h )
             usage
             ;;
+        v )
+            terraform_args+=("-var-file=${OPTARG}")
+            ;;
         \? )
             err "Invalid Option: -$OPTARG"
             exit 1
@@ -47,7 +52,11 @@ done
 shift $((OPTIND -1))
 
 # Main script
-if [[ "${files[*]}" -gt 0 ]]; then
+if [[ -f "${TFVARS}" ]]; then
+    varfile="-var-file=${TFVARS}"
+fi
+
+if [[ "${#files[*]}" -gt 0 ]]; then
     for file in "${files[@]}"; do
         if [[ -f "${file}" ]]; then
             # shellcheck disable=SC2016
