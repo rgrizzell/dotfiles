@@ -7,6 +7,7 @@
 - clean: ['~']
 
 - link:
+    ~/.ansible.cfg: ansible.cfg
     ~/.profile:
         force: true
         path: profile
