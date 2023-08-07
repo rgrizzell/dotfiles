@@ -5,5 +5,6 @@ package foreign-env
 package fzf
 package grc
 package https://github.com/franciscolourenco/done
+package https://github.com/lilyball/nix-env.fish
 theme bobthefish
 theme default
