@@ -3,9 +3,15 @@
 	email = robert@grizzell.me
 	signingkey = F7F6C134977499ED
 
+[commit]
+	gpgsign = true
+
 [core]
 	editor = vim
 	autocrlf = input
+
+[help]
+	autocorrect = 20
 
 [init]
 	defaultBranch = "main"
@@ -13,3 +19,32 @@
 
 [credential "https://github.com"]
 	username = rgrizzell
+
+[alias]
+	a = "add"
+	ap = "add -p"
+	c = "commit -m"
+	ca = "commit --amend --no-edit"
+	cas = "commit --amend --no-edit -S"
+	chb = "checkout -b"
+	cho = "checkout"
+	cn = "commit --no-verify -m"
+	cpm = "cherry-pick -m 1"
+	cs = "commit -S -m"
+	d = "diff"
+	del = "branch -D"
+	dv = "difftool --tool=vimdiff --no-prompt"
+	f = "fetch"
+	l = "log --show-signature"
+	ll = "log --oneline"
+	last = "log -1 HEAD --stat"
+	mf = "!git fetch && git merge"
+	p = "pull"
+	pt = "pull --tags"
+	pu = "push"
+	puf = "push --force-with-lease"
+	put = "push --tags"
+	re = "reset HEAD~1 --mixed"
+	rv = "remote -v"
+	s = "status -sb"
+	st = "status"
