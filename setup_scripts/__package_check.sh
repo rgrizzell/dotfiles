@@ -8,7 +8,7 @@ __package_check() {
         debian|ubuntu|pop )
             sudo dpkg-query -W "$1" >/dev/null
             ;;
-        fedora )
+        fedora|rhel|centos )
             sudo rpm -qa | grep "$1"
             ;;
     esac

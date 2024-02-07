@@ -9,7 +9,7 @@ __package_install() {
             sudo apt-get update
             sudo apt-get install -y "$@"
             ;;
-        fedora )
+        fedora|rhel|centos )
             sudo dnf install -y "$@"
             ;;
     esac

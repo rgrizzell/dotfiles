@@ -36,6 +36,7 @@
     - ~/Projects
 
 - shell:
+    - [setup_scripts/git.sh, Setting up Git]
     - [git submodule update --init --recursive, Downloading submodules]
-    - [install_scripts/oh-my-fish.sh, Installing oh-my-fish]
+    - [setup_scripts/oh-my-fish.sh, Installing oh-my-fish]
     - [./fzf/install --all, Installing fzf]

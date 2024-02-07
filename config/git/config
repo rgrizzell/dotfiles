@@ -17,9 +17,6 @@
 	defaultBranch = "main"
 	templateDir = "~/.config/git/template"
 
-[credential "https://github.com"]
-	username = rgrizzell
-
 [alias]
 	a = "add"
 	ap = "add -p"
@@ -48,3 +45,6 @@
 	rv = "remote -v"
 	s = "status -sb"
 	st = "status"
+
+[include]
+	path = credentials
