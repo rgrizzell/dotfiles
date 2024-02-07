@@ -9,9 +9,11 @@
 - link:
     ~/.ansible.cfg: ansible.cfg
     ~/.profile:
-        force: true
         path: profile
-    ~/.bash_profile: bash_profile
+        force: true
+    ~/.bash_profile:
+        path: bash_profile
+        force: true
     ~/.config/autostart: config/autostart
     ~/.config/git: config/git
     ~/.config/i3: config/i3
@@ -36,4 +38,4 @@
 - shell:
     - [git submodule update --init --recursive, Downloading submodules]
     - [install_scripts/oh-my-fish.sh, Installing oh-my-fish]
-    - [yes | ./fzf/install, Installing fzf]
+    - [./fzf/install --all, Installing fzf]
