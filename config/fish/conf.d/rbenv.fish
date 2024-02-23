@@ -1,1 +1,3 @@
-status --is-interactive; and ~/.rbenv/bin/rbenv init - fish | source
+if test -e ~/.rbenv/bin/rbenv; and status --is-interactive
+    ~/.rbenv/bin/rbenv init - fish | source
+end
