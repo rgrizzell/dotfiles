@@ -3,24 +3,18 @@
   geometry_hinting = True
   borderless = True
   scroll_tabbar = True
-  title_hide_sizetext = True
-  title_transmit_bg_color = "#888a85"
-  title_receive_bg_color = "#4e9a06"
   enabled_plugins = MavenPluginURLHandler, LaunchpadBugURLHandler, LaunchpadCodeURLHandler, APTURLHandler, TerminatorThemes
   suppress_multiple_term_dialog = True
-  title_font = Ubuntu Mono 12
 [keybindings]
 [profiles]
   [[default]]
     audible_bell = True
     background_darkness = 0.2
-    cursor_color = "#aaaaaa"
-    font = Ubuntu Mono 13
-    foreground_color = "#ffffff"
     scrollback_lines = 10000
     palette = "#000000:#cc0000:#4e9a06:#c4a000:#3465a4:#75507b:#06989a:#d3d7cf:#555753:#ef2929:#8ae234:#fce94f:#729fcf:#ad7fa8:#34e2e2:#eeeeec"
     use_theme_colors = True
     bold_is_bright = True
+    title_hide_sizetext = True
 [layouts]
   [[default]]
     [[[window0]]]
@@ -30,4 +24,74 @@
       type = Terminal
       parent = window0
       profile = default
+  [[4 node master]]
+    [[[child0]]]
+      type = Window
+      parent = ""
+      order = 0
+      position = 2560:24
+      maximised = False
+      fullscreen = False
+      size = 1438, 1463
+      title = ~
+      last_active_term = 48f83545-02ed-457c-aa0b-d2439411c766
+      last_active_window = True
+    [[[child1]]]
+      type = VPaned
+      parent = child0
+      order = 0
+      position = 729
+      ratio = 0.5
+    [[[terminal2]]]
+      type = Terminal
+      parent = child1
+      order = 0
+      profile = default
+      uuid = 48f83545-02ed-457c-aa0b-d2439411c766
+    [[[child3]]]
+      type = VPaned
+      parent = child1
+      order = 1
+      position = 364
+      ratio = 0.5
+    [[[child4]]]
+      type = HPaned
+      parent = child3
+      order = 0
+      position = 716
+      ratio = 0.49965108164689465
+    [[[terminal5]]]
+      type = Terminal
+      parent = child4
+      order = 0
+      group = Kappa
+      profile = default
+      uuid = ab28068d-fa94-48f7-a372-1daf6bbfad0b
+    [[[terminal6]]]
+      type = Terminal
+      parent = child4
+      order = 1
+      group = Kappa
+      profile = default
+      uuid = 482d6441-103e-4b98-b048-45026a99a9a6
+    [[[child7]]]
+      type = HPaned
+      parent = child3
+      order = 1
+      position = 716
+      ratio = 0.49965108164689465
+    [[[terminal8]]]
+      type = Terminal
+      parent = child7
+      order = 0
+      group = Kappa
+      profile = default
+      uuid = 36c8ad6d-41cf-47a2-8078-655bc71fe500
+    [[[terminal9]]]
+      type = Terminal
+      parent = child7
+      order = 1
+      group = Kappa
+      profile = default
+      uuid = b413f3ef-3cd4-42bf-b09b-fd78ec01b106
 [plugins]
