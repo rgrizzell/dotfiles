@@ -19,6 +19,7 @@
     ~/.config/i3: config/i3
     ~/.config/i3status: config/i3status
     ~/.config/fish: config/fish
+    ~/.config/flameshot: config/flameshot
     ~/.config/omf: config/omf
     ~/.config/terminator: config/terminator
     ~/.docker: docker
