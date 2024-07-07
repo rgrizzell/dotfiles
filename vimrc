@@ -13,6 +13,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'sheerun/vim-polyglot'
 Plug 'altercation/vim-colors-solarized'
 Plug 'hashivim/vim-terraform'
+Plug 'fatih/vim-go'
 Plug '~/.dotfiles/fzf'
 call plug#end()
 
