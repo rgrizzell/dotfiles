@@ -1,6 +1,5 @@
 package apt
 package bang-bang
-package fish-pipenv
 package foreign-env
 package fzf
 package grc
