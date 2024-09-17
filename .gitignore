@@ -8,5 +8,7 @@ config/fish/functions/fish_prompt.fish
 config/fish/functions/fish_user_key_bindings.fish
 config/fish/functions/fzf_key_bindings.fish
 config/git/credentials
+config/nvim/plugin/*
+config/nvim/after/plugin/*
 config/terminator/plugins
 gnupg/*
