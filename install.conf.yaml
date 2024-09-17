@@ -23,7 +23,7 @@
     ~/.config/nvim: config/nvim
     ~/.config/omf: config/omf
     ~/.config/terminator: config/terminator
-    ~/.docker: docker
+    ~/.docker/config.json: docker/config.json
     ~/.gnupg: gnupg
     ~/.ssh/config: ssh/config
     ~/.ssh/id_rsa_gpg.pub: ssh/id_rsa_gpg.pub
