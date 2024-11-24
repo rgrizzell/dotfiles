@@ -14,6 +14,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'altercation/vim-colors-solarized'
 Plug 'hashivim/vim-terraform'
 Plug 'fatih/vim-go'
+Plug 'sago35/tinygo.vim'
 Plug '~/.dotfiles/fzf'
 call plug#end()
 
