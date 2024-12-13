@@ -3,15 +3,9 @@
 	email = robert@grizzell.me
 	signingkey = F7F6C134977499ED
 
-[commit]
-	gpgsign = true
-
 [core]
 	editor = vim
 	autocrlf = input
-
-[rerere]
-	enabled = true
 
 [help]
 	autocorrect = 20
@@ -19,6 +13,27 @@
 [init]
 	defaultBranch = "main"
 	templateDir = "~/.config/git/template"
+
+[commit]
+	gpgsign = true
+
+[tag]
+	gpgSign = true
+
+[pull]
+	rebase = "interactive"
+
+[push]
+	default = "upstream"
+	autoSetupRemote = true
+	followTags = true
+	gpgSign = "if-asked"
+
+[merge]
+	tool = "vimdiff"
+
+[rerere]
+	enabled = true
 
 [alias]
 	a = "add"

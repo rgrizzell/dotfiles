@@ -25,6 +25,10 @@ fi
 sudo systemctl enable pcscd.service
 sudo systemctl start pcscd.service
 
+# Set permissions on gpg agent files.
+find ~/.gnupg -type f -exec chmod 600 {} \;
+find ~/.gnupg -type d -exec chmod 700 {} \;
+
 if [ -n "$KEYID" ]; then
     gpg --recv-key "$KEYID"
 fi
