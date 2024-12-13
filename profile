@@ -30,3 +30,8 @@ fi
 if [ -f "$HOME/.profile_vars" ] ; then
     . "$HOME/.profile_vars"
 fi
+
+# ensure firefox uses wayland mode
+if [ "$XDG_SESSION_TYPE" == "wayland" ]; then
+    export MOZ_ENABLE_WAYLAND=1
+fi
