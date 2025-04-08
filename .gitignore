@@ -11,4 +11,5 @@ config/git/credentials
 config/nvim/plugin/*
 config/nvim/after/plugin/*
 config/terminator/plugins
+docker/config.json
 gnupg/*
